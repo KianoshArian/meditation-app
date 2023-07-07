@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import styled from "styled-components";
+import { Home } from './Home/Home';
+import { ExercisePage } from './ExercisePage/ExercisePage';
+
+
+const AppContainer = styled.div`
+  direction: rtl;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2f5ff;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainer>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element = {<Home />}/>
+          <Route path="/exercise/:id" element = {<ExercisePage />}/>
+        </Routes>
+      </BrowserRouter>
+    </AppContainer>
   );
 }
 
